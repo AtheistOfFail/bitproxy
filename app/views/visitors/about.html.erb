@@ -1,0 +1,96 @@
+<!-- Header -->
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Who is this for?</h2>
+                <p class="lead">This proxy is for those who need access to torrents but don't want government snoops or companies to monitor their torrent usage. <br> <br> We utilize the best technology to ensure torrent downloads are delivered to you securely and safely over VPN. <br> <br> All files are cached for 6 hours and automatically deleted per <a href="https://www.gpo.gov/fdsys/pkg/USCODE-2011-title17/pdf/USCODE-2011-title17-chap5-sec512.pdf">DMCA §512(b) and §512(c)</a></p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Pricing Information</h2>
+                <p class="lead">Static Pricing</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Pricing</th>
+                      <th>Cost per User (one time / per torrent)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Domain Registration</td>
+                      <td>$9.99/yr</td>
+                      <td>$0.05 / $0.0005 </td>
+                    </tr>
+                    <tr>
+                      <td>VPN Service</td>
+                      <td>$39.95/yr</td>
+                      <td>$0.10 / $0.001 </td>
+                    </tr>
+                    <tr>
+                      <td>Heroku Hosting</td>
+                      <td>$27.00/month</td>
+                      <td>$0.10 / $0.001 </td>
+                    </tr>
+                  </tbody> 
+                </table>
+
+                <p class="lead">Dynamic Pricing</p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Pricing</th>
+                      <th>Cost per User</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Storage (S3)</td>
+                      <td>Per Use</td>
+                      <td>$0.0300 per GB</td>
+                    </tr>
+                    <tr>
+                      <td>Bandwidth (S3)</td>
+                      <td>Per Use</td>
+                      <td>$0.090 per GB</td>
+                    </tr>
+                  </tbody> 
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /.intro-header -->
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-inline">
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                    <a href="/about">About</a>
+                  </li>
+                  <li>
+                    <% if user_signed_in? %>
+                      <a href="/lougout">Log out</a>
+                    <% else %>
+                      <a href="/login">Sign up/Sign In</a>
+                    <% end %>
+                  </li>
+                </ul>
+                <p class="copyright text-muted small">Copyright &copy; BitProxy Foundation 2016. No Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>

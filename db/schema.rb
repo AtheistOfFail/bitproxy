@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 20160123175406) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "bitcoin_address",     default: "", null: false
-    t.string   "encrypted_password",  default: "", null: false
+    t.string   "bitcoin_address",     default: "",    null: false
+    t.string   "encrypted_password",  default: "",    null: false
+    t.boolean  "active",              default: false
     t.datetime "remember_created_at"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["bitcoin_address"], name: "index_users_on_bitcoin_address", unique: true, using: :btree
