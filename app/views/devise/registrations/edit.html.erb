@@ -7,10 +7,10 @@
       <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :bitcoin_address %>
+      <%= f.bitcoin_address_field :bitcoin_address, class: 'form-control' %>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_bitcoin_address %></div>
       <% end %>
     </div>
     <fieldset>

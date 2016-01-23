@@ -16,8 +16,8 @@
   "scripts": {"postdeploy": "bundle exec rake db:migrate; bundle exec rake db:seed"},
   "env": {
     "ADMIN_EMAIL": {
-      "description": "The administrator's email address for signing in.",
-      "value": "user@example.com",
+      "description": "The administrator's bitcoin_address address for signing in.",
+      "value": "abc123",
       "required": true
     },
     "ADMIN_PASSWORD": {
