@@ -89,7 +89,7 @@ class VisitorsController < ApplicationController
  		dl.save
 
  		directory = Dir.mkdir(Rails.public_path + '/' + Digest::MD5.hexdigest(dl.name))
- 		bt = RubyTorrent::BitTorrent.new(filename)
+ 		bt = RubyTorrent::BitTorrent.new(filename, directory)
  		thread = Thread.new do
   		until bt.complete?
     		puts "#{bt.percent_completed}% done"
