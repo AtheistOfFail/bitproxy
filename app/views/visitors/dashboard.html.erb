@@ -23,7 +23,11 @@
                 <td><a href="/download?file=<%dl.torrent_url%>"><%= dl.name %></a></td>
                 <td><a href="<%= dl.torrent_url %>">URL<a></td>
                 <td><%= dl.status %></td>
-                <td><a class='btn btn-success' disabled="disabled">Access</a></td>
+                <% if dl.status == "Downloaded" %>
+                  <td><a class='btn btn-success' href="/public/<% Digest::MD5.hexdigest(dl.name) %>">Access</a></td>
+                <% else %>
+                  <td><a class='btn btn-success' disabled="disabled">Access</a></td>
+                <% end %>
               </tr>
               <% end %>
             </tbody> 
@@ -57,7 +61,11 @@
               <td><a href="/download?file=<%=dl.torrent_url%>"><%= dl.name %></a></td>
               <td><a href="<%= dl.torrent_url %>">URL<a></td>
               <td><%= dl.status %></td>
-              <td><a class='btn btn-success' disabled="disabled">Access</a></td>
+              <% if dl.status == "Downloaded" %>
+                <td><a class='btn btn-success' href="/public/<% Digest::MD5.hexdigest(dl.name) %>">Access</a></td>
+              <% else %>
+                <td><a class='btn btn-success' disabled="disabled">Access</a></td>
+              <% end %>
             </tr>
             <% end %>
           </tbody> 

@@ -69,6 +69,7 @@ class VisitorsController < ApplicationController
 
 			if body["error"] || body["data"]["status"] == "expired"
 				tx_id.destroy
+				dl = Download.find_by_name(@name).destroy
 				create_payment(@total_price, @name, params["file"])	
 			elsif body["data"]["status"] == "complete" || body["data"]["status"] == "confirmed"
 				dl = Download.find_by_name(@name)
@@ -76,12 +77,34 @@ class VisitorsController < ApplicationController
 				dl.status = "Beginning download"
 				tx_id.save
 				dl.save
+				trigger_download(dl)
 			end
  		else
  			create_payment(@total_price, @name, params["file"])	
  		end
  	end
 
+ 	def trigger_download(dl)
+ 		dl.status = "Downloading"
+ 		dl.save
+
+ 		directory = Dir.mkdir(Rails.public_path + '/' + Digest::MD5.hexdigest(dl.name))
+ 		bt = RubyTorrent::BitTorrent.new(filename)
+ 		thread = Thread.new do
+  		until bt.complete?
+    		puts "#{bt.percent_completed}% done"
+    		sleep 5
+  		end
+		end
+		bt.on_event(self, :complete) { complete_download(dl) }
+ 	end
+
+ 	def complete_download(dl)
+ 		dl.downloaded_at = Time.now
+ 		dl.status = "Downloaded"
+ 		dl.save
+ 	end
+ 	
  	def save_to_tempfile(url)
   	uri = URI.parse(url)
   	Net::HTTP.start(uri.host, uri.port) do |http|
