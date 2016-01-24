@@ -21,6 +21,9 @@ h6 {
     font-weight: 700;
 }
 
+.container {
+    width: 95% !important;
+}
 .topnav {
     font-size: 14px;
 }

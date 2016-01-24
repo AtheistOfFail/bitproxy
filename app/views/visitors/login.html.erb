@@ -1,12 +1,20 @@
 <!-- Header -->
-<div class="content-section-a">
+<div class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-sm-6">
-                <%= render 'devise/sessions/new' %>
+            <div class="col-lg-6 col-sm-6">
+              <div class="card">
+                <div class="card-content">
+                  <%= render 'devise/sessions/new' %>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <%= render 'devise/registrations/new' %>
+            <div class="col-lg-6 col-sm-6">
+              <div class="card">
+                <div class="card-content">
+                  <%= render 'devise/registrations/new' %>
+                </div>
+              </div>
             </div>
         </div>
 
@@ -15,27 +23,31 @@
 <!-- /.intro-header -->
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="list-inline">
-                  <li>
-                    <a href="/">Home</a>
-                  </li>
-                  <li>
-                    <a href="/about">About</a>
-                  </li>
-                  <li>
-                    <% if user_signed_in? %>
-                      <a href="/lougout">Log out</a>
-                    <% else %>
-                      <a href="/login">Sign up/Sign In</a>
-                    <% end %>
-                  </li>
-                </ul>
-                <p class="copyright text-muted small">Copyright &copy; BitProxy Foundation 2016. No Rights Reserved</p>
-            </div>
-        </div>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="list-inline">
+          <li>
+            <a href="/" class="white-text">Home</a>
+          </li>
+          <li>
+            <a href="/about" class="white-text">About</a>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+            <a href="/lougout" class="white-text">Log out</a>
+            <% else %>
+            <a href="/login" class="white-text">Sign up/Sign In</a>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2016 BitProxy Foundation. No Rights Reserved
+    </div>
+  </div>
 </footer>

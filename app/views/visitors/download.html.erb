@@ -1,61 +1,72 @@
+<% if user_signed_in? %>
+<% if !current_user.active? %>
+<% controller.redirect_to complete_registration_path %>
+<% end %>
+<% end %>
+
 <!-- Header -->
 <div class="intro-header">
-    <div class="container">
+  <div class="container">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h1>Insert your torrent/magnet link</h1>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                        <li>
-                          <input class="form-control"></input>
-                        </li>
-                        <li>
-                          <a href="/download" class="btn btn-success btn-md"><span>Download</span></a>
-                        </li>
-                        <% if user_signed_in? %>
-                        <li>
-                          <a href="/logout" class="btn btn-primary btn-md"><span>Log Out</span></a>
-                        </li>
-                        <% else %>
-                        <li>
-                          <a href="/login" class="btn btn-primary btn-md"><span>Register / Log In</span></a>
-                        </li>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Insert your torrent/magnet link</span>
+            <ul class="list-inline intro-social-buttons">
+              <li>
+                <input class="form-control"></input>
+              </li>
+              <li>
+                <a href="/download" class="btn btn-success btn-md"><span>Download</span></a>
+              </li>
+              <% if user_signed_in? %>
+              <li>
+                <a href="/logout" class="btn btn-primary btn-md"><span>Log Out</span></a>
+              </li>
+              <% else %>
+              <li>
+                <a href="/login" class="btn btn-primary btn-md"><span>Register / Log In</span></a>
+              </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-
+      </div>
     </div>
-    <!-- /.container -->
+
+  </div>
+  <!-- /.container -->
 
 </div>
 <!-- /.intro-header -->
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="list-inline">
-                  <li>
-                    <a href="/">Home</a>
-                  </li>
-                  <li>
-                    <a href="/about">About</a>
-                  </li>
-                  <li>
-                    <% if user_signed_in? %>
-                      <a href="/lougout">Log out</a>
-                    <% else %>
-                      <a href="/login">Sign up/Sign In</a>
-                    <% end %>
-                  </li>
-                </ul>
-                <p class="copyright text-muted small">Copyright &copy; BitProxy Foundation 2016. No Rights Reserved</p>
-            </div>
-        </div>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="list-inline">
+          <li>
+            <a href="/" class="white-text">Home</a>
+          </li>
+          <li>
+            <a href="/about" class="white-text">About</a>
+          </li>
+          <li>
+            <% if user_signed_in? %>
+            <a href="/lougout" class="white-text">Log out</a>
+            <% else %>
+            <a href="/login" class="white-text">Sign up/Sign In</a>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2016 BitProxy Foundation. No Rights Reserved
+    </div>
+  </div>
 </footer>
