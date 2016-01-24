@@ -20,8 +20,9 @@
           <div class="card-content">
             <span class="card-title">Payment Information</span>
             <% if user_signed_in? %>
-            <p class="lead">Warning, your payment must come from the bitcoin address that you originally signed up with. <br><br> Your address: <b><%= current_user.bitcoin_address %></b></p>
+            <p class="lead">Paying this invoice will authenticate the following address. <br><br> Your address: <b><%= current_user.bitcoin_address %></b></p>
             <% end %>
+            <a class="btn btn-success" href="https://test.bitpay.com/invoice?id=LxuN1nQwB3UKTVuamJeLSi">Pay</a>
           </div>
         </div>
       </div>

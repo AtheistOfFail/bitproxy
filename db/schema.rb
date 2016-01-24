@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123175406) do
+ActiveRecord::Schema.define(version: 20160124015034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bitpay_invoices", force: :cascade do |t|
+    t.text     "user_id"
+    t.text     "bitpay_invoice"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "bitcoin_address",     default: "",    null: false
