@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyText
+  torrent_url: MyText
+  reference: MyText
+
+two:
+  user_id: MyText
+  torrent_url: MyText
+  reference: MyText

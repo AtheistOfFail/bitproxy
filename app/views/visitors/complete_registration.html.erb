@@ -1,5 +1,7 @@
 <% if !user_signed_in? %>
-<% controller.redirect_to root_path %>
+  <% controller.redirect_to root_path %>
+<% elsif current_user.active %>
+  <% controller.redirect_to root_path %>
 <% end %>
 
 <!-- Header -->
@@ -22,7 +24,14 @@
             <% if user_signed_in? %>
             <p class="lead">Paying this invoice will authenticate the following address. <br><br> Your address: <b><%= current_user.bitcoin_address %></b></p>
             <% end %>
-            <a class="btn btn-success" href="https://test.bitpay.com/invoice?id=LxuN1nQwB3UKTVuamJeLSi">Pay</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-sm-12">
+        <div class="card">
+          <div class="card-content">
+            <iframe src="https://test.bitpay.com/invoice?id=<%=current_user.bitpay_invoices.find_by_reference('sign_up').bitpay_invoice%>" style="width: 800px; height: 400px;"></iframe>
           </div>
         </div>
       </div>
