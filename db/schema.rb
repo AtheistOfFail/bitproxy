@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160124040846) do
   create_table "bitpay_invoices", force: :cascade do |t|
     t.text     "user_id"
     t.text     "bitpay_invoice"
-    t.text     "reference"
+    t.text     "name"
     t.boolean  "paid",           default: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160124040846) do
   create_table "downloads", force: :cascade do |t|
     t.text     "user_id"
     t.text     "torrent_url"
-    t.text     "reference"
+    t.text     "name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

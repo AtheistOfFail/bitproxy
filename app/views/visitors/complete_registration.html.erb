@@ -31,7 +31,7 @@
       <div class="col-lg-12 col-sm-12">
         <div class="card">
           <div class="card-content">
-            <iframe src="https://test.bitpay.com/invoice?id=<%=current_user.bitpay_invoices.find_by_reference('sign_up').bitpay_invoice%>" style="width: 800px; height: 400px;"></iframe>
+            <iframe src="https://test.bitpay.com/invoice?id=<%=current_user.bitpay_invoices.find_by_name('sign_up').bitpay_invoice%>" style="width: 800px; height: 400px;"></iframe>
           </div>
         </div>
       </div>
