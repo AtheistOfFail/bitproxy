@@ -88,15 +88,15 @@ class VisitorsController < ApplicationController
  		dl.status = "Downloading"
  		dl.save
 
- 		directory = Dir.mkdir(Rails.public_path + '/' + Digest::MD5.hexdigest(dl.name))
- 		bt = RubyTorrent::BitTorrent.new(filename, directory)
- 		thread = Thread.new do
-  		until bt.complete?
-    		puts "#{bt.percent_completed}% done"
-    		sleep 5
-  		end
-		end
-		bt.on_event(self, :complete) { complete_download(dl) }
+ 		#directory = Dir.mkdir(Rails.public_path + '/' + Digest::MD5.hexdigest(dl.name))
+ 		#bt = RubyTorrent::BitTorrent.new(filename, directory)
+ 		#thread = Thread.new do
+  		#until bt.complete?
+    		#puts "#{bt.percent_completed}% done"
+    		#sleep 5
+  		#end
+		#end
+		#bt.on_event(self, :complete) { complete_download(dl) }
  	end
 
  	def complete_download(dl)
