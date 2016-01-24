@@ -19,6 +19,13 @@ class VisitorsController < ApplicationController
  		end
  	end
 
+ 	def dashboard
+ 		if user_signed_in?
+ 			@personal_downloads = current_user.downloads
+ 		end
+ 		@public_downloads = Download.where({user_id: nil}).limit(10)
+ 	end
+
  	def download
  		@input_file = params["file"]
  		@returned_file = save_to_tempfile(@input_file)
@@ -36,13 +43,13 @@ class VisitorsController < ApplicationController
 
  		if user_signed_in? && current_user.bitpay_invoices
  			@user_purchase = current_user.bitpay_invoices.find_by_name(@name)
- 			if @user_purchase.paid
+ 			if @user_purchase && @user_purchase.paid
  				redirect_to dashboard_path
  				return
  			end
  		else
  			@public_purchase = BitpayInvoice.find_by_name(@name)
- 			if @public_purchase.paid
+ 			if @public_purchase && @public_purchase.paid
  				redirect_to dashboard_path
  				return
  			end
@@ -59,16 +66,16 @@ class VisitorsController < ApplicationController
  			tx_id = BitpayInvoice.find_by_name(@name)
  			response = HTTParty.get("https://test.bitpay.com/invoices/#{tx_id.bitpay_invoice}")
 			body = JSON.parse(response.body)
+
 			if body["error"] || body["data"]["status"] == "expired"
 				tx_id.destroy
 				create_payment(@total_price, @name, params["file"])	
-			else
+			elsif body["data"]["status"] == "complete" || body["data"]["status"] == "confirmed"
 				dl = Download.find_by_name(@name)
 				tx_id.paid = true
-				dl.paid = true
 				dl.status = "Beginning download"
 				tx_id.save
-				dl.paid
+				dl.save
 			end
  		else
  			create_payment(@total_price, @name, params["file"])	

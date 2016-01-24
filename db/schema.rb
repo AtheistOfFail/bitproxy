@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20160124040846) do
     t.text     "user_id"
     t.text     "torrent_url"
     t.text     "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "status"
+    t.datetime "downloaded_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
